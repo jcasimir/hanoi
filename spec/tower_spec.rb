@@ -12,4 +12,25 @@ describe Tower do
     tower.discs = discs
     expect(tower.discs).to eq discs
   end
+
+  context "#can_support?" do
+    it "can support a smaller disc" do
+      tower.discs = [Disc.new(2)]
+      newbie = Disc.new(1)
+      expect(tower.can_support?(newbie)).to be
+    end
+
+    it "cannot support a larger disc" do
+      tower.discs = [Disc.new(2)]
+      newbie = Disc.new(3)
+      expect(tower.can_support?(newbie)).to_not be
+    end
+  end
+
+  context "#top" do
+    it "returns the top disc" do
+      tower.discs = [Disc.new(1), Disc.new(2)]
+      expect(tower.top.size).to eq 1
+    end
+  end
 end
