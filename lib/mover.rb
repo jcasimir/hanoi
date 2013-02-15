@@ -20,10 +20,4 @@ class Mover
 
     TowerPrinter.print([x, y, z])    
   end
-
-  def self.next_move_for(x, y, z)
-    moves_from = [x, y, z].sort_by{|tower| [tower.size, tower.top.size] }.last
-    moves_to   = [x, y, z].detect{|target| can_move_from_a_to_b?(moves_from, target)}
-    [moves_from, moves_to]
-  end
 end
