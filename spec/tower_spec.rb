@@ -13,6 +13,10 @@ describe Tower do
     expect(tower.discs).to eq discs
   end
 
+  it "starts with no discs" do
+    expect(tower.discs).to eq []
+  end
+
   context "#can_support?" do
     it "can support a smaller disc" do
       tower.discs = [Disc.new(2)]

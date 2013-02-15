@@ -3,6 +3,7 @@ class Tower
 
   def initialize(name)
     @name = name
+    @discs = []
   end
 
   def can_support?(incoming)
@@ -19,5 +20,9 @@ class Tower
 
   def take
     discs.shift
+  end
+
+  def empty?
+    discs.empty?
   end
 end
