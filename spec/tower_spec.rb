@@ -33,4 +33,19 @@ describe Tower do
       expect(tower.top.size).to eq 1
     end
   end
+
+  context "#stack" do
+    it "adds a disc to the top" do
+      tower.discs = [Disc.new(2)]
+      tower.stack(Disc.new(1))
+      expect(tower.top.size).to eq 1
+    end
+  end
+
+  context "#take" do
+    it "removes the top disc" do
+      tower.discs = [Disc.new(1), Disc.new(2)]
+      expect(tower.take.size).to eq 1
+    end
+  end
 end

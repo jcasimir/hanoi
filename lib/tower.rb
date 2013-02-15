@@ -13,4 +13,11 @@ class Tower
     discs.first
   end
 
+  def stack(input)
+    discs.unshift(input)
+  end
+
+  def take
+    discs.shift
+  end
 end
