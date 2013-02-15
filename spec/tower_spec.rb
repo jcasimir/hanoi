@@ -44,12 +44,53 @@ describe Tower do
       tower.stack(Disc.new(1))
       expect(tower.top.size).to eq 1
     end
+
+    it "checks for stack validity" do
+      tower.discs = [Disc.new(3), Disc.new(1)]
+      expect{tower.stack(Disc.new(2))}.to raise_exception(InvalidStackError)
+    end
   end
 
   context "#take" do
     it "removes the top disc" do
       tower.discs = [Disc.new(1), Disc.new(2)]
       expect(tower.take.size).to eq 1
+    end
+  end
+
+  context "#validate!" do
+    it "is cool with a valid stack" do
+      tower.discs = [Disc.new(1), Disc.new(2)]
+      expect{tower.validate!}.to_not raise_exception(InvalidStackError)
+    end
+
+    it "is raises on an invalid stack" do
+      tower.discs = [Disc.new(2), Disc.new(1)]
+      expect{tower.validate!}.to raise_exception(InvalidStackError)
+    end
+
+  end
+
+  context "#valid?" do
+    it "is cool with a valid stack" do
+      tower.discs = [Disc.new(1), Disc.new(2)]
+      expect(tower.valid?).to be
+    end
+
+    it "is angry about an invalid stack" do
+      tower.discs = [Disc.new(2), Disc.new(1)]
+      expect(tower.valid?).to_not be
+    end
+  end
+
+  context "#size" do
+    it "returns the number of discs when it has any" do
+      tower.discs = [Disc.new(1)]
+      expect(tower.size).to eq 1
+    end
+
+    it "returns the 0 when empty" do
+      expect(tower.size).to eq 0
     end
   end
 end
